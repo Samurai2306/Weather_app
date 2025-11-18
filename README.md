@@ -189,7 +189,24 @@ npm run preview
 
 ### Устранение проблем
 
-Если при деплое возникает ошибка "Get Pages site failed":
+**Ошибка "Permission denied" или "403 Forbidden":**
+
+1. Убедитесь, что в настройках репозитория (`Settings` → `Actions` → `General`) включены права для GitHub Actions:
+
+   - В разделе "Workflow permissions" выберите "Read and write permissions"
+   - Поставьте галочку "Allow GitHub Actions to create and approve pull requests"
+   - Нажмите `Save`
+
+2. Если проблема сохраняется, создайте Personal Access Token:
+   - Перейдите в `Settings` → `Developer settings` → `Personal access tokens` → `Tokens (classic)`
+   - Создайте новый токен с правами `repo` (полный доступ к репозиториям)
+   - Скопируйте токен
+   - Добавьте его как секрет: `Settings` → `Secrets and variables` → `Actions` → `New repository secret`
+   - Имя: `GH_PAGES_TOKEN`
+   - Значение: ваш токен
+   - В файле `.github/workflows/deploy.yml` замените `${{ secrets.GITHUB_TOKEN }}` на `${{ secrets.GH_PAGES_TOKEN }}`
+
+**Ошибка "Get Pages site failed":**
 
 1. Убедитесь, что GitHub Pages включен в настройках репозитория
 2. Проверьте, что выбран источник `Deploy from a branch` и ветка `gh-pages`
