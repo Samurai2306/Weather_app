@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  font-family: 'Space Grotesk', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  --bg-base: #05020d;
+  --bg-highlight: #33155f;
+  --hero-base: rgba(13, 5, 28, 0.6);
+  --hero-highlight: rgba(120, 55, 255, 0.35);
+  --hero-shadow: 0 30px 60px rgba(10, 0, 26, 0.45);
+  --glass-bg: rgba(8, 4, 20, 0.55);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-shadow: 0 25px 80px rgba(0, 0, 0, 0.35);
+  --card-base: rgba(14, 4, 35, 0.75);
+  --card-highlight: rgba(121, 78, 204, 0.35);
+  --text-primary: #faf5ff;
+  --text-secondary: rgba(239, 231, 255, 0.78);
+  --text-soft: rgba(239, 231, 255, 0.55);
+  --accent: #e0b3ff;
+  --accent-secondary: #b794f6;
+  --accent-tertiary: #9f7aea;
+}
+
+body[data-theme='sunrise'] {
+  --bg-base: #faf8f4;
+  --bg-highlight: #f5ede0;
+  --hero-highlight: rgba(255, 200, 180, 0.25);
+  --hero-base: rgba(255, 248, 240, 0.75);
+  --glass-bg: rgba(255, 252, 248, 0.7);
+  --glass-border: rgba(255, 180, 150, 0.4);
+  --glass-shadow: 0 8px 32px rgba(255, 150, 100, 0.15);
+  --card-highlight: rgba(255, 200, 180, 0.3);
+  --card-base: rgba(255, 252, 248, 0.8);
+  --text-primary: #4a2e1f;
+  --text-secondary: rgba(74, 46, 31, 0.8);
+  --text-soft: rgba(74, 46, 31, 0.6);
+  --accent: #ff7a4d;
+  --accent-secondary: #ff9d7a;
+  --accent-tertiary: #ffc0a6;
+}
+
+body[data-theme='day'] {
+  --bg-base: #faf7f2;
+  --bg-highlight: #f5ede4;
+  --hero-highlight: rgba(255, 190, 160, 0.25);
+  --hero-base: rgba(255, 248, 240, 0.75);
+  --hero-shadow: 0 12px 40px rgba(255, 140, 100, 0.2);
+  --glass-bg: rgba(255, 252, 248, 0.75);
+  --glass-border: rgba(255, 160, 130, 0.45);
+  --glass-shadow: 0 8px 32px rgba(255, 140, 100, 0.18);
+  --card-base: rgba(255, 252, 248, 0.85);
+  --card-highlight: rgba(255, 190, 160, 0.35);
+  --text-primary: #3a2415;
+  --text-secondary: rgba(58, 36, 21, 0.85);
+  --text-soft: rgba(58, 36, 21, 0.65);
+  --accent: #ff6b47;
+  --accent-secondary: #ff8c69;
+  --accent-tertiary: #ffad8b;
+}
+
+body[data-theme='sunset'],
+body[data-theme='twilight'],
+body[data-theme='dusk'] {
+  --bg-base: #120726;
+  --bg-highlight: #5a1d69;
+  --hero-highlight: rgba(255, 142, 212, 0.35);
+  --hero-base: rgba(12, 2, 28, 0.65);
+  --card-highlight: rgba(239, 104, 255, 0.35);
+  --card-base: rgba(25, 5, 43, 0.75);
+  --accent: #f9a8d4;
+}
+
+body[data-theme='rain'] {
+  --bg-base: #f5f8fa;
+  --bg-highlight: #e8f0f4;
+  --hero-highlight: rgba(180, 210, 240, 0.25);
+  --hero-base: rgba(240, 250, 255, 0.75);
+  --hero-shadow: 0 12px 40px rgba(100, 150, 200, 0.2);
+  --glass-bg: rgba(240, 250, 255, 0.75);
+  --glass-border: rgba(150, 190, 220, 0.45);
+  --glass-shadow: 0 8px 32px rgba(100, 150, 200, 0.18);
+  --card-highlight: rgba(180, 210, 240, 0.35);
+  --card-base: rgba(240, 250, 255, 0.85);
+  --text-primary: #2a4a5a;
+  --text-secondary: rgba(42, 74, 90, 0.85);
+  --text-soft: rgba(42, 74, 90, 0.65);
+  --accent: #5a9bc8;
+  --accent-secondary: #7ab8d8;
+  --accent-tertiary: #9ad5e8;
+}
+
+body[data-theme='storm'] {
+  --bg-base: #04050b;
+  --bg-highlight: #141e30;
+  --hero-highlight: rgba(98, 114, 164, 0.3);
+  --hero-base: rgba(3, 7, 18, 0.85);
+  --card-highlight: rgba(98, 114, 164, 0.35);
+  --card-base: rgba(6, 9, 16, 0.85);
+  --accent: #b3c5ff;
+}
+
+body[data-theme='snow'] {
+  --bg-base: #f8f9fc;
+  --bg-highlight: #f0f2f6;
+  --hero-highlight: rgba(200, 220, 250, 0.25);
+  --hero-base: rgba(245, 250, 255, 0.75);
+  --hero-shadow: 0 12px 40px rgba(120, 160, 200, 0.2);
+  --glass-bg: rgba(245, 250, 255, 0.75);
+  --glass-border: rgba(170, 200, 230, 0.45);
+  --glass-shadow: 0 8px 32px rgba(120, 160, 200, 0.18);
+  --card-highlight: rgba(200, 220, 250, 0.35);
+  --card-base: rgba(245, 250, 255, 0.85);
+  --text-primary: #2a3a4a;
+  --text-secondary: rgba(42, 58, 74, 0.85);
+  --text-soft: rgba(42, 58, 74, 0.65);
+  --accent: #6a8fb8;
+  --accent-secondary: #8aa8c8;
+  --accent-tertiary: #aac8e8;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at 20% 20%, var(--bg-highlight), var(--bg-base)) fixed;
+  transition: background 600ms ease;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
