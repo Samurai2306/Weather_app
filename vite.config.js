@@ -7,9 +7,11 @@ import react from '@vitejs/plugin-react'
 // Для кастомного домена или корневого деплоя используйте base = '/'
 const getBasePath = () => {
   // В GitHub Actions используем переменную окружения или имя репозитория
+  // eslint-disable-next-line no-undef
   if (process.env.GITHUB_ACTIONS) {
     // Можно использовать переменную окружения VITE_BASE_PATH
     // или определить из GITHUB_REPOSITORY (формат: owner/repo-name)
+    // eslint-disable-next-line no-undef
     const repoName = process.env.GITHUB_REPOSITORY?.split('/')[1]
     return repoName ? `/${repoName}/` : '/Weather_app/'
   }

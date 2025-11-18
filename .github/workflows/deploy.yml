@@ -7,6 +7,7 @@ on:
       - master
   workflow_dispatch:
 
+# Права для записи в репозиторий (создание ветки gh-pages)
 permissions:
   contents: write
 
@@ -17,27 +18,30 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 0  # Полная история для работы с git
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
+          cache: 'npm'  # Кэширование node_modules для ускорения
 
       - name: Install dependencies
-        run: npm ci
+        run: npm ci  # Установка зависимостей из package-lock.json
 
       - name: Build
         run: npm run build
         env:
+          # API ключ для WeatherAPI (опционально, есть fallback в коде)
           VITE_WEATHER_API_KEY: ${{ secrets.VITE_WEATHER_API_KEY }}
+          # Переменные для определения base path в vite.config.js
+          GITHUB_ACTIONS: true
           GITHUB_REPOSITORY: ${{ github.repository }}
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-          cname: false
+          github_token: ${{ secrets.GITHUB_TOKEN }}  # Автоматический токен GitHub
+          publish_dir: ./dist  # Папка с собранным проектом
+          cname: false  # Без кастомного домена
