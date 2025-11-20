@@ -925,47 +925,47 @@ function App() {
               °F
             </button>
             <div className="theme-controls">
-              {themeMode === 'auto' ? (
-                <>
+              <div className="theme-toggle-wrapper">
+                <span className="theme-label">Тема:</span>
+                <div className="theme-toggle">
                   <button
-                    className={`control-button theme-mode active`}
+                    className={`theme-toggle-btn ${themeMode === 'auto' ? 'active' : ''}`}
                     onClick={() => setThemeMode('auto')}
                     title="Автоматическая тема по погоде"
                   >
-                     Авто
+                    <span className="theme-icon">🌈</span>
+                    <span className="theme-text">Авто</span>
                   </button>
                   <button
-                    className="control-button theme-switch"
+                    className={`theme-toggle-btn ${themeMode === 'manual' ? 'active' : ''}`}
                     onClick={() => setThemeMode('manual')}
-                    title="Переключить на ручной выбор темы"
+                    title="Ручной выбор темы"
                   >
-                     Ручной
+                    <span className="theme-icon">🎨</span>
+                    <span className="theme-text">Ручная</span>
                   </button>
-                </>
-              ) : (
-                <>
+                  <div className={`theme-toggle-slider ${themeMode === 'manual' ? 'manual' : ''}`}></div>
+                </div>
+              </div>
+              {themeMode === 'manual' && (
+                <div className="manual-theme-selector">
                   <button
-                    className="control-button theme-switch"
-                    onClick={() => setThemeMode('auto')}
-                    title="Вернуться к автоматической теме"
-                  >
-                    
-                  </button>
-                  <button
-                    className={`control-button ${manualTheme === 'light' ? 'active' : ''}`}
+                    className={`theme-option ${manualTheme === 'light' ? 'active' : ''}`}
                     onClick={() => setManualTheme('light')}
                     title="Светлая тема"
                   >
-                    ☀️
+                    <span className="theme-option-icon">☀️</span>
+                    <span className="theme-option-label">Светлая</span>
                   </button>
                   <button
-                    className={`control-button ${manualTheme === 'dark' ? 'active' : ''}`}
+                    className={`theme-option ${manualTheme === 'dark' ? 'active' : ''}`}
                     onClick={() => setManualTheme('dark')}
                     title="Темная тема"
                   >
-                    🌙
+                    <span className="theme-option-icon">🌙</span>
+                    <span className="theme-option-label">Темная</span>
                   </button>
-                </>
+                </div>
               )}
             </div>
           </div>
