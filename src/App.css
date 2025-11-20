@@ -45,6 +45,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
+  align-items: center;
 }
 
 .chip {
@@ -55,6 +56,13 @@
   border: 1px solid transparent;
   background: color-mix(in srgb, var(--text-primary) 8%, transparent);
   color: var(--text-primary);
+  white-space: nowrap;
+  flex-shrink: 0;
+  min-width: fit-content;
+  max-width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .chip.outline {
@@ -1472,33 +1480,43 @@ body[data-dark-mode='true'] {
 .social-link img {
   width: 24px;
   height: 24px;
-  filter: brightness(0) saturate(100%);
-  opacity: 0.85;
   transition: all 0.3s ease;
+  display: block;
 }
 
-/* Контрастные цвета для светлой темы */
+/* Контрастные цвета для светлой темы - темные иконки */
 body[data-theme='day'] .social-link img,
 body[data-theme='rain'] .social-link img,
-body[data-theme='snow'] .social-link img {
-  filter: brightness(0) saturate(100%) invert(0);
-  opacity: 0.7;
+body[data-theme='snow'] .social-link img,
+body[data-theme='sunrise'] .social-link img {
+  filter: brightness(0) saturate(100%) contrast(1.2);
+  opacity: 0.9;
 }
 
-/* Контрастные цвета для темной темы */
+/* Контрастные цвета для темной темы - светлые иконки */
 body[data-theme='night'] .social-link img,
 body[data-theme='storm'] .social-link img,
 body[data-theme='dusk'] .social-link img,
 body[data-theme='twilight'] .social-link img,
 body[data-theme='sunset'] .social-link img,
 body[data-dark-mode='true'] .social-link img {
-  filter: brightness(0) saturate(100%) invert(1);
-  opacity: 0.85;
+  filter: brightness(0) saturate(100%) invert(1) contrast(1.1);
+  opacity: 0.95;
 }
 
 .social-link:hover img {
   opacity: 1;
   transform: scale(1.1);
+  filter: brightness(0) saturate(100%) contrast(1.3);
+}
+
+body[data-theme='night'] .social-link:hover img,
+body[data-theme='storm'] .social-link:hover img,
+body[data-theme='dusk'] .social-link:hover img,
+body[data-theme='twilight'] .social-link:hover img,
+body[data-theme='sunset'] .social-link:hover img,
+body[data-dark-mode='true'] .social-link:hover img {
+  filter: brightness(0) saturate(100%) invert(1) contrast(1.2);
 }
 
 .footer-text {
