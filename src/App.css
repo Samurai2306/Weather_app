@@ -1487,6 +1487,22 @@ body[data-dark-mode='true'] {
   width: fit-content;
 }
 
+.footer__portfolio-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 2px solid color-mix(in srgb, var(--accent) 40%, transparent);
+  transition: all 0.3s ease;
+}
+
+.footer-portfolio-link:hover .footer__portfolio-avatar {
+  border-color: var(--accent);
+  transform: scale(1.1);
+  box-shadow: 0 2px 8px color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
 .footer-portfolio-link:hover {
   background: color-mix(in srgb, var(--accent) 25%, transparent);
   border-color: var(--accent);

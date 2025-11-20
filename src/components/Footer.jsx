@@ -15,6 +15,11 @@ function Footer() {
               rel="noopener noreferrer"
               className="footer-portfolio-link"
             >
+              <img 
+              src="https://lh3.googleusercontent.com/d/1e-zV7dZKgUXv96QRAvwxcUrQ7ADRSGei" 
+              alt="Портфолио разработчика" 
+              className="footer__portfolio-avatar"
+            />
               Портфолио разработчика
             </a>
           </div>
@@ -28,7 +33,7 @@ function Footer() {
                 className="footer-contact-item"
               >
                 <img src={`${import.meta.env.BASE_URL}icons8-tg-1.svg`} alt="Telegram" />
-                <span>Telegram @mm0l0d0y</span>
+                <span>@mm0l0d0y</span>
               </a>
               <a
                 href="https://github.com/Samurai2306"
@@ -37,7 +42,7 @@ function Footer() {
                 className="footer-contact-item"
               >
                 <img src={`${import.meta.env.BASE_URL}icons8-github-1.svg`} alt="GitHub" />
-                <span>GitHub Samurai2306</span>
+                <span>Samurai2306</span>
               </a>
               <a
                 href="mailto:undertale2006rus@gmail.com"
@@ -53,7 +58,7 @@ function Footer() {
                 className="footer-contact-item"
               >
                 <img src={`${import.meta.env.BASE_URL}icons8-vk-2.svg`} alt="VKontakte" />
-                <span>VK glebnigger</span>
+                <span>glebnigger</span>
               </a>
               <a
                 href="https://samurai2306.github.io/Tecno_tracker"
@@ -61,7 +66,7 @@ function Footer() {
                 rel="noopener noreferrer"
                 className="footer-contact-item"
               >
-                <span className="footer-contact-icon">🌤️</span>
+                <span className="footer-contact-icon">🖲️</span>
                 <span>Трекер технологий</span>
               </a>
             </div>
