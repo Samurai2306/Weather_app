@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 
-function WeatherDisplay({ weather, status, error, onRetry, temperatureUnit, moscowWeather, forecast, darkMode }) {
+function WeatherDisplay({ weather, status, error, onRetry, temperatureUnit, moscowWeather, forecast }) {
   if (!weather) {
     return (
       <div className="empty-state">

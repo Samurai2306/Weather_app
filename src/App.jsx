@@ -6,6 +6,7 @@ import Accordion from './components/Accordion'
 import RouteSelector from './components/RouteSelector'
 import RouteWeather from './components/RouteWeather'
 import ExtremeWeatherAlert from './components/ExtremeWeatherAlert'
+import Footer from './components/Footer'
 import './App.css'
 
 const CITIES = [
@@ -112,6 +113,39 @@ const ROUTES = [
       { name: 'Станция Мытищи', query: '55.9139,37.7453' },
       { name: 'Ярославский вокзал', query: '55.7797,37.6564' },
       { name: 'МЭИ', query: '55.7554,37.7022' }
+    ]
+  },
+  {
+    id: 'guz',
+    name: 'Маршрут к ГУЗ',
+    description: 'Мытищи → Ярославский вокзал → ГУЗ',
+    icon: '🏛️',
+    locations: [
+      { name: 'Станция Мытищи', query: '55.9139,37.7453' },
+      { name: 'Ярославский вокзал', query: '55.7797,37.6564' },
+      { name: 'ГУЗ', query: '55.7586,37.6561' }
+    ]
+  },
+  {
+    id: 'mgsu',
+    name: 'Маршрут к МГСУ',
+    description: 'Мытищи → Ярославский вокзал → МГСУ',
+    icon: '🏗️',
+    locations: [
+      { name: 'Станция Мытищи', query: '55.9139,37.7453' },
+      { name: 'Ярославский вокзал', query: '55.7797,37.6564' },
+      { name: 'МГСУ', query: '55.8083,37.7000' }
+    ]
+  },
+  {
+    id: 'baumann',
+    name: 'Маршрут к МГТУ им. Баумана',
+    description: 'Мытищи → Ярославский вокзал → МГТУ',
+    icon: '🔧',
+    locations: [
+      { name: 'Станция Мытищи', query: '55.9139,37.7453' },
+      { name: 'Ярославский вокзал', query: '55.7797,37.6564' },
+      { name: 'МГТУ им. Баумана', query: '55.7654,37.6846' }
     ]
   }
 ]
@@ -448,12 +482,18 @@ function App() {
   const [searchQuery, setSearchQuery] = useState('')
   const [forecast, setForecast] = useState(null)
   const [moscowWeather, setMoscowWeather] = useState(null)
-  const [darkMode, setDarkMode] = useState(false)
+  const [themeMode, setThemeMode] = useState('auto') // 'auto' или 'manual'
+  const [manualTheme, setManualTheme] = useState('light') // 'light' или 'dark'
 
   useEffect(() => {
-    document.body.dataset.theme = theme
-    document.body.dataset.darkMode = darkMode ? 'true' : 'false'
-  }, [theme, darkMode])
+    if (themeMode === 'auto') {
+      document.body.dataset.theme = theme
+      document.body.dataset.darkMode = 'false'
+    } else {
+      document.body.dataset.theme = manualTheme === 'dark' ? 'night' : 'day'
+      document.body.dataset.darkMode = manualTheme === 'dark' ? 'true' : 'false'
+    }
+  }, [theme, themeMode, manualTheme])
 
   const fetchMockWeather = useCallback(async (city) => {
     await new Promise((resolve) => setTimeout(resolve, 650))
@@ -884,13 +924,50 @@ function App() {
             >
               °F
             </button>
-            <button
-              className={`control-button dark-mode ${darkMode ? 'active' : ''}`}
-              onClick={() => setDarkMode(!darkMode)}
-              title="Темная тема"
-            >
-              {darkMode ? '☀️' : '🌙'}
-            </button>
+            <div className="theme-controls">
+              {themeMode === 'auto' ? (
+                <>
+                  <button
+                    className={`control-button theme-mode active`}
+                    onClick={() => setThemeMode('auto')}
+                    title="Автоматическая тема по погоде"
+                  >
+                     Авто
+                  </button>
+                  <button
+                    className="control-button theme-switch"
+                    onClick={() => setThemeMode('manual')}
+                    title="Переключить на ручной выбор темы"
+                  >
+                     Ручной
+                  </button>
+                </>
+              ) : (
+                <>
+                  <button
+                    className="control-button theme-switch"
+                    onClick={() => setThemeMode('auto')}
+                    title="Вернуться к автоматической теме"
+                  >
+                    
+                  </button>
+                  <button
+                    className={`control-button ${manualTheme === 'light' ? 'active' : ''}`}
+                    onClick={() => setManualTheme('light')}
+                    title="Светлая тема"
+                  >
+                    ☀️
+                  </button>
+                  <button
+                    className={`control-button ${manualTheme === 'dark' ? 'active' : ''}`}
+                    onClick={() => setManualTheme('dark')}
+                    title="Темная тема"
+                  >
+                    🌙
+                  </button>
+                </>
+              )}
+            </div>
           </div>
         </div>
       </header>
@@ -922,7 +999,6 @@ function App() {
                   temperatureUnit={temperatureUnit}
                   moscowWeather={moscowWeather}
                   forecast={forecast}
-                  darkMode={darkMode}
                 />
               </>
             )}
@@ -951,7 +1027,7 @@ function App() {
                   Очистить
                 </button>
               )}
-            </div>
+      </div>
             <p className="mini-note">
               Для каждой точки показываем актуальные данные, прогноз через 15 минут, а для московских
               объектов — погоду через 1 час 30 минут и значение на выбранное вами время.
@@ -972,6 +1048,7 @@ function App() {
           </div>
         </Accordion>
       </main>
+      <Footer />
     </div>
   )
 }

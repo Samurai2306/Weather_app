@@ -861,6 +861,16 @@
   display: flex;
   gap: 0.5rem;
   align-items: center;
+  flex-wrap: wrap;
+}
+
+.theme-controls {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-left: 0.5rem;
+  padding-left: 0.5rem;
+  border-left: 1px solid color-mix(in srgb, var(--text-primary) 20%, transparent);
 }
 
 .control-button {
@@ -1213,5 +1223,100 @@ body[data-dark-mode='true'] {
 
   .controls {
     flex-wrap: wrap;
+  }
+
+  .theme-controls {
+    margin-left: 0;
+    padding-left: 0;
+    border-left: none;
+    margin-top: 0.5rem;
+    width: 100%;
+  }
+}
+
+/* Footer Styles */
+.app-footer {
+  margin-top: 4rem;
+  padding: 3rem 2rem 2rem;
+  background: color-mix(in srgb, var(--bg-base) 95%, var(--bg-highlight));
+  border-top: 1px solid color-mix(in srgb, var(--text-primary) 10%, transparent);
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.footer-section h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.footer-social {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--glass-bg) 80%, transparent);
+  border: 1px solid color-mix(in srgb, var(--glass-border) 60%, transparent);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.social-link:hover {
+  background: color-mix(in srgb, var(--accent) 20%, transparent);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+.social-link img {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) saturate(100%) invert(1);
+  opacity: 0.8;
+}
+
+.social-link:hover img {
+  opacity: 1;
+}
+
+.footer-text {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.footer-copyright {
+  color: var(--text-soft);
+  font-size: 0.85rem;
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .app-footer {
+    padding: 2rem 1.5rem 1.5rem;
   }
 }
