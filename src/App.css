@@ -699,11 +699,6 @@
   box-shadow: 0 8px 24px color-mix(in srgb, var(--accent) 20%, transparent);
 }
 
-.route-icon {
-  font-size: 2rem;
-  line-height: 1;
-}
-
 .route-info {
   display: flex;
   flex-direction: column;
@@ -929,13 +924,6 @@
   color: #ffffff;
 }
 
-.theme-icon {
-  font-size: 0.85rem;
-  line-height: 1;
-  display: inline-block;
-  flex-shrink: 0;
-}
-
 .theme-text {
   font-size: 0.75rem;
   line-height: 1;
@@ -962,61 +950,68 @@
 
 .manual-theme-selector {
   display: flex;
-  gap: 0.4rem;
+  align-items: center;
+  justify-content: center;
   animation: fadeInUp 0.3s ease;
   padding-top: 0.25rem;
   margin-left: 0;
 }
 
-.theme-option {
+.theme-toggle-switch {
+  position: relative;
+  width: 64px;
+  height: 32px;
+  border-radius: 16px;
+  border: 2px solid color-mix(in srgb, var(--text-primary) 25%, transparent);
+  background: linear-gradient(135deg, #ffd89b 0%, #ffecd2 100%);
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0;
+  overflow: hidden;
+  box-shadow: 0 2px 8px color-mix(in srgb, var(--text-primary) 10%, transparent);
+}
+
+.theme-toggle-switch:hover {
+  border-color: color-mix(in srgb, var(--accent) 50%, transparent);
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--accent) 20%, transparent);
+  transform: scale(1.05);
+}
+
+.theme-toggle-switch.dark {
+  background: linear-gradient(135deg, #1a1625 0%, #2d2540 100%);
+  border-color: color-mix(in srgb, var(--accent) 40%, transparent);
+}
+
+.theme-switch-slider {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #ffffff;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.4rem;
-  padding: 0.4rem 0.7rem;
-  border-radius: 8px;
-  border: 1px solid color-mix(in srgb, var(--text-primary) 20%, transparent);
-  background: color-mix(in srgb, var(--text-primary) 6%, transparent);
-  color: var(--text-secondary);
-  cursor: pointer;
-  transition: all 0.25s ease;
-  min-width: 75px;
-  position: relative;
-  flex: 1;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
-.theme-option:hover {
-  border-color: color-mix(in srgb, var(--accent) 50%, transparent);
-  background: color-mix(in srgb, var(--accent) 12%, transparent);
-  transform: translateY(-1px);
-  box-shadow: 0 2px 6px color-mix(in srgb, var(--accent) 15%, transparent);
+.theme-toggle-switch.dark .theme-switch-slider {
+  transform: translateX(32px);
+  background: #e8e0f0;
+  box-shadow: 0 2px 8px rgba(184, 168, 216, 0.3);
 }
 
-.theme-option.active {
-  border-color: var(--accent);
-  background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 18%, transparent), color-mix(in srgb, var(--accent-secondary) 12%, transparent));
-  color: var(--text-primary);
-  box-shadow: 0 2px 8px color-mix(in srgb, var(--accent) 25%, transparent);
-  transform: translateY(-1px);
-}
-
-.theme-option-icon {
-  font-size: 1rem;
+.theme-switch-icon {
+  font-size: 0.9rem;
   line-height: 1;
-  transition: transform 0.25s ease;
-  flex-shrink: 0;
+  transition: transform 0.3s ease;
+  display: block;
 }
 
-.theme-option:hover .theme-option-icon,
-.theme-option.active .theme-option-icon {
-  transform: scale(1.1);
-}
-
-.theme-option-label {
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.1px;
-  white-space: nowrap;
+.theme-toggle-switch:hover .theme-switch-icon {
+  transform: scale(1.15) rotate(15deg);
 }
 
 .control-button {

@@ -9,7 +9,6 @@ function RouteSelector({ routes, selectedRoute, onRouteSelect }) {
             className={`route-button ${selectedRoute?.id === route.id ? 'active' : ''}`}
             onClick={() => onRouteSelect(route)}
           >
-            <span className="route-icon">{route.icon}</span>
             <div className="route-info">
               <strong>{route.name}</strong>
               <small>{route.description}</small>

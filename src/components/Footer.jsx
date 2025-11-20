@@ -13,7 +13,7 @@ function Footer() {
                 className="social-link"
                 aria-label="GitHub"
               >
-                <img src="/icons8-github-1.svg" alt="GitHub" />
+                <img src={`${import.meta.env.BASE_URL}icons8-github-1.svg`} alt="GitHub" />
               </a>
               <a
                 href="https://vk.com/glebnigger"
@@ -22,7 +22,7 @@ function Footer() {
                 className="social-link"
                 aria-label="VKontakte"
               >
-                <img src="/icons8-vk-2.svg" alt="VKontakte" />
+                <img src={`${import.meta.env.BASE_URL}icons8-vk-2.svg`} alt="VKontakte" />
               </a>
               <a
                 href="https://t.me/MMOLODOY"
@@ -31,14 +31,14 @@ function Footer() {
                 className="social-link"
                 aria-label="Telegram"
               >
-                <img src="/icons8-tg-1.svg" alt="Telegram" />
+                <img src={`${import.meta.env.BASE_URL}icons8-tg-1.svg`} alt="Telegram" />
               </a>
               <a
                 href="mailto:undertale2006rus@gmail.com"
                 className="social-link"
                 aria-label="Email"
               >
-                <img src="/icons8-gmail-1.svg" alt="Email" />
+                <img src={`${import.meta.env.BASE_URL}icons8-gmail-1.svg`} alt="Email" />
               </a>
             </div>
           </div>

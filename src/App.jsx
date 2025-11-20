@@ -86,7 +86,6 @@ const ROUTES = [
     id: 'mirea-vernadsky',
     name: 'Маршрут к МИРЭА (Вернадского)',
     description: 'Мытищи → Ярославский вокзал → МИРЭА',
-    icon: '🎓',
     locations: [
       { name: 'Станция Мытищи', query: '55.9139,37.7453' },
       { name: 'Ярославский вокзал', query: '55.7797,37.6564' },
@@ -97,7 +96,6 @@ const ROUTES = [
     id: 'mirea-pirog',
     name: 'Маршрут к МИРЭА (Малая Пироговская)',
     description: 'Мытищи → Ярославский вокзал → МИРЭА',
-    icon: '🎓',
     locations: [
       { name: 'Станция Мытищи', query: '55.9139,37.7453' },
       { name: 'Ярославский вокзал', query: '55.7797,37.6564' },
@@ -108,7 +106,6 @@ const ROUTES = [
     id: 'mei',
     name: 'Маршрут к МЭИ',
     description: 'Мытищи → Ярославский вокзал → МЭИ',
-    icon: '⚡',
     locations: [
       { name: 'Станция Мытищи', query: '55.9139,37.7453' },
       { name: 'Ярославский вокзал', query: '55.7797,37.6564' },
@@ -119,7 +116,6 @@ const ROUTES = [
     id: 'guz',
     name: 'Маршрут к ГУЗ',
     description: 'Мытищи → Ярославский вокзал → ГУЗ',
-    icon: '🏛️',
     locations: [
       { name: 'Станция Мытищи', query: '55.9139,37.7453' },
       { name: 'Ярославский вокзал', query: '55.7797,37.6564' },
@@ -130,7 +126,6 @@ const ROUTES = [
     id: 'mgsu',
     name: 'Маршрут к МГСУ',
     description: 'Мытищи → Ярославский вокзал → МГСУ',
-    icon: '🏗️',
     locations: [
       { name: 'Станция Мытищи', query: '55.9139,37.7453' },
       { name: 'Ярославский вокзал', query: '55.7797,37.6564' },
@@ -141,7 +136,6 @@ const ROUTES = [
     id: 'baumann',
     name: 'Маршрут к МГТУ им. Баумана',
     description: 'Мытищи → Ярославский вокзал → МГТУ',
-    icon: '🔧',
     locations: [
       { name: 'Станция Мытищи', query: '55.9139,37.7453' },
       { name: 'Ярославский вокзал', query: '55.7797,37.6564' },
@@ -933,7 +927,6 @@ function App() {
                     onClick={() => setThemeMode('auto')}
                     title="Автоматическая тема по погоде"
                   >
-                    <span className="theme-icon">🌈</span>
                     <span className="theme-text">Авто</span>
                   </button>
                   <button
@@ -941,7 +934,6 @@ function App() {
                     onClick={() => setThemeMode('manual')}
                     title="Ручной выбор темы"
                   >
-                    <span className="theme-icon">🎨</span>
                     <span className="theme-text">Ручная</span>
                   </button>
                   <div className={`theme-toggle-slider ${themeMode === 'manual' ? 'manual' : ''}`}></div>
@@ -950,20 +942,13 @@ function App() {
               {themeMode === 'manual' && (
                 <div className="manual-theme-selector">
                   <button
-                    className={`theme-option ${manualTheme === 'light' ? 'active' : ''}`}
-                    onClick={() => setManualTheme('light')}
-                    title="Светлая тема"
+                    className={`theme-toggle-switch ${manualTheme === 'dark' ? 'dark' : 'light'}`}
+                    onClick={() => setManualTheme(manualTheme === 'light' ? 'dark' : 'light')}
+                    title={manualTheme === 'light' ? 'Переключить на темную тему' : 'Переключить на светлую тему'}
                   >
-                    <span className="theme-option-icon">☀️</span>
-                    <span className="theme-option-label">Светлая</span>
-                  </button>
-                  <button
-                    className={`theme-option ${manualTheme === 'dark' ? 'active' : ''}`}
-                    onClick={() => setManualTheme('dark')}
-                    title="Темная тема"
-                  >
-                    <span className="theme-option-icon">🌙</span>
-                    <span className="theme-option-label">Темная</span>
+                    <div className="theme-switch-slider">
+                      <span className="theme-switch-icon">{manualTheme === 'light' ? '☀️' : '🌙'}</span>
+                    </div>
                   </button>
                 </div>
               )}
@@ -973,7 +958,7 @@ function App() {
       </header>
 
       <main className="main-content">
-        <Accordion title="🌍 Погода в городах" icon="🌍" defaultOpen={true}>
+        <Accordion title="Погода в городах" defaultOpen={true}>
           <div className="accordion-inner">
             <CitySelector
               cities={CITIES}
@@ -1005,14 +990,14 @@ function App() {
           </div>
         </Accordion>
 
-        <Accordion title="🎓 Погода по маршруту к вузу" icon="🎓" defaultOpen={false}>
+        <Accordion title="Погода по маршруту к вузу" defaultOpen={false}>
           <div className="accordion-inner">
             <RouteSelector routes={ROUTES} selectedRoute={selectedRoute} onRouteSelect={handleRouteSelect} />
             <RouteWeather route={selectedRoute} weatherData={routeWeather} loading={routeLoading} />
           </div>
         </Accordion>
 
-        <Accordion title="📍 Расширенные точки" icon="📍" defaultOpen={false}>
+        <Accordion title="Расширенные точки" defaultOpen={false}>
           <div className="accordion-inner">
             <div className="time-input">
               <label htmlFor="custom-time">Собственное время</label>
@@ -1038,7 +1023,7 @@ function App() {
               {FOCUS_LOCATIONS.map((location) => (
                 <Accordion
                   key={location.id}
-                  title={`${location.icon || '📍'} ${location.title}`}
+                  title={location.title}
                   defaultOpen={false}
                 >
                   <FocusLocationCard location={location} data={focusWeather[location.id]} />

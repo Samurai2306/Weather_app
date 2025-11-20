@@ -27,9 +27,7 @@ function RouteWeather({ route, weatherData, loading }) {
   return (
     <div className="route-weather">
       <div className="route-header">
-        <h4>
-          {route.icon} {route.name}
-        </h4>
+        <h4>{route.name}</h4>
         <p className="route-description">{route.description}</p>
       </div>
       <div className="route-steps">
