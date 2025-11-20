@@ -866,6 +866,8 @@
   margin-left: 0.5rem;
   padding-left: 0.5rem;
   border-left: 1px solid color-mix(in srgb, var(--text-primary) 20%, transparent);
+  min-width: 0;
+  flex-shrink: 0;
 }
 
 .theme-toggle-wrapper {
@@ -873,6 +875,9 @@
   align-items: center;
   gap: 0.5rem;
   flex-wrap: nowrap;
+  width: 100%;
+  min-width: 0;
+  flex-shrink: 0;
 }
 
 .theme-label {
@@ -891,7 +896,7 @@
   padding: 3px;
   border: 1px solid color-mix(in srgb, var(--text-primary) 20%, transparent);
   box-shadow: inset 0 1px 2px color-mix(in srgb, var(--text-primary) 8%, transparent);
-  min-width: 120px;
+  width: 120px;
   flex-shrink: 0;
 }
 
@@ -955,6 +960,8 @@
   animation: fadeInUp 0.3s ease;
   padding-top: 0.25rem;
   margin-left: 0;
+  width: 100%;
+  flex-shrink: 0;
 }
 
 .theme-toggle-switch {
@@ -1465,13 +1472,33 @@ body[data-dark-mode='true'] {
 .social-link img {
   width: 24px;
   height: 24px;
+  filter: brightness(0) saturate(100%);
+  opacity: 0.85;
+  transition: all 0.3s ease;
+}
+
+/* Контрастные цвета для светлой темы */
+body[data-theme='day'] .social-link img,
+body[data-theme='rain'] .social-link img,
+body[data-theme='snow'] .social-link img {
+  filter: brightness(0) saturate(100%) invert(0);
+  opacity: 0.7;
+}
+
+/* Контрастные цвета для темной темы */
+body[data-theme='night'] .social-link img,
+body[data-theme='storm'] .social-link img,
+body[data-theme='dusk'] .social-link img,
+body[data-theme='twilight'] .social-link img,
+body[data-theme='sunset'] .social-link img,
+body[data-dark-mode='true'] .social-link img {
   filter: brightness(0) saturate(100%) invert(1);
-  opacity: 0.8;
-  transition: opacity 0.3s ease;
+  opacity: 0.85;
 }
 
 .social-link:hover img {
   opacity: 1;
+  transform: scale(1.1);
 }
 
 .footer-text {
