@@ -3,7 +3,7 @@ function Footer() {
     <footer className="app-footer">
       <div className="footer-container">
         <div className="footer-content">
-          <div className="footer-section">
+          <div className="footer-section footer-contacts">
             <h3>Контакты</h3>
             <div className="footer-social">
               <a
@@ -16,7 +16,7 @@ function Footer() {
                 <img src="/icons8-github-1.svg" alt="GitHub" />
               </a>
               <a
-                href="https://vk.com"
+                href="https://vk.com/glebnigger"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="social-link"
@@ -25,7 +25,7 @@ function Footer() {
                 <img src="/icons8-vk-2.svg" alt="VKontakte" />
               </a>
               <a
-                href="https://t.me"
+                href="https://t.me/MMOLODOY"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="social-link"
@@ -34,7 +34,7 @@ function Footer() {
                 <img src="/icons8-tg-1.svg" alt="Telegram" />
               </a>
               <a
-                href="mailto:example@mail.com"
+                href="mailto:undertale2006rus@gmail.com"
                 className="social-link"
                 aria-label="Email"
               >
@@ -42,14 +42,14 @@ function Footer() {
               </a>
             </div>
           </div>
-          <div className="footer-section">
+          <div className="footer-section footer-info">
             <p className="footer-text">
               Приложение для отслеживания погоды с динамическими темами и прогнозами по маршрутам.
             </p>
-            <p className="footer-copyright">
-              © {new Date().getFullYear()} Weather App. Все права защищены.
-            </p>
           </div>
+        </div>
+        <div className="footer-copyright">
+          © {new Date().getFullYear()} ГЛЕБ ЧЕРНОВ. СОЗДАНО С ❤️ И БОЛЬШИМ КОЛИЧЕСТВОМ КОДА.
         </div>
       </div>
     </footer>
