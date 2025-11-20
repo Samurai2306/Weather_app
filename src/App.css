@@ -1437,7 +1437,7 @@ body[data-dark-mode='true'] {
 
 .footer-content {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.2fr 1fr 0.8fr;
   gap: 3rem;
   align-items: start;
   margin-bottom: 2rem;
@@ -1448,6 +1448,117 @@ body[data-dark-mode='true'] {
   font-weight: 600;
   margin-bottom: 1rem;
   color: var(--text-primary);
+}
+
+.footer-about {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.footer-role {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  margin: 0;
+}
+
+.footer-description {
+  font-size: 0.85rem;
+  color: var(--text-soft);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.footer-portfolio-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  margin-top: 0.5rem;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--accent) 15%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+  color: var(--text-primary);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  width: fit-content;
+}
+
+.footer-portfolio-link:hover {
+  background: color-mix(in srgb, var(--accent) 25%, transparent);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+.footer-contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.footer-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.footer-contact-item:hover {
+  background: color-mix(in srgb, var(--text-primary) 8%, transparent);
+  color: var(--text-primary);
+  transform: translateX(4px);
+}
+
+.footer-contact-item img {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+/* Контрастные цвета для иконок в контактах - светлая тема */
+body[data-theme='day'] .footer-contact-item img,
+body[data-theme='rain'] .footer-contact-item img,
+body[data-theme='snow'] .footer-contact-item img,
+body[data-theme='sunrise'] .footer-contact-item img {
+  filter: brightness(0) saturate(100%) contrast(1.2);
+  opacity: 0.85;
+}
+
+/* Контрастные цвета для иконок в контактах - темная тема */
+body[data-theme='night'] .footer-contact-item img,
+body[data-theme='storm'] .footer-contact-item img,
+body[data-theme='dusk'] .footer-contact-item img,
+body[data-theme='twilight'] .footer-contact-item img,
+body[data-theme='sunset'] .footer-contact-item img,
+body[data-dark-mode='true'] .footer-contact-item img {
+  filter: brightness(0) saturate(100%) invert(1) contrast(1.1);
+  opacity: 0.9;
+}
+
+.footer-contact-item:hover img {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.footer-contact-icon {
+  font-size: 1.2rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
 }
 
 .footer-social {
@@ -1535,12 +1646,14 @@ body[data-dark-mode='true'] .social-link:hover img {
   margin-top: 1.5rem;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 968px) {
   .footer-content {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
+}
 
+@media (max-width: 768px) {
   .app-footer {
     padding: 2rem 1.5rem;
   }
@@ -1549,5 +1662,22 @@ body[data-dark-mode='true'] .social-link:hover img {
     font-size: 0.8rem;
     padding-top: 1rem;
     margin-top: 1rem;
+  }
+
+  .footer-about {
+    gap: 0.5rem;
+  }
+
+  .footer-role {
+    font-size: 0.85rem;
+  }
+
+  .footer-description {
+    font-size: 0.8rem;
+  }
+
+  .footer-portfolio-link {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
   }
 }
